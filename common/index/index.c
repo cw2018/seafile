@@ -886,6 +886,9 @@ int add_to_index(struct index_state *istate,
         alias->ce_flags |= CE_ADDED;
         return 0;
     }
+
+    g_message ("%s: index: %d, wt: %d.\n", ce->name, ce->ce_mtime.sec, (int)st->st_mtime);
+
     /* Skip index file errors. */
     if (index_cb (full_path, sha1, crypt) < 0)
         return 0;
